@@ -40,8 +40,9 @@ let loginWindow;
 let playerWindow;
 
 let userData = app.getPath('userData');
-if (!fs.existsSync(`${userData}/temp`)) {
-    fs.mkdirSync(`${userData}/temp`);
+
+if (!fs.existsSync(path.join(userData, 'temp'))) {
+    fs.mkdirSync(path.join(userData, 'temp'));
 };
 
 function createPlayerWindow () {
@@ -51,7 +52,7 @@ function createPlayerWindow () {
         autoHideMenuBar: true, 
         webPreferences: {
             nodeIntegration: false, 
-            preload: path.join(__dirname + '/preload.js')
+            preload: path.join(__dirname, 'preload.js')
         } 
     });
 
@@ -128,8 +129,8 @@ api.get('/api/download/:id', (req, res, next) => {
     var id = req.params.id;
 
     ytdl.getBasicInfo(id, (err, info) => {
-        if (fs.existsSync(path.join(userData, `/temp/${info.video_id}.mp3`))) {
-            return res.sendFile(path.join(userData, `/temp/${info.video_id}.mp3`));
+        if (fs.existsSync(path.join(userData, 'temp', `${info.video_id}.mp3`))) {
+            return res.sendFile(path.join(userData, 'temp', `${info.video_id}.mp3`));
         }   
 
         var proc = new ffmpeg({source: ytdl(info.video_url)});
@@ -137,9 +138,9 @@ api.get('/api/download/:id', (req, res, next) => {
         //proc.setFfmpegPath('/usr/bin/ffmpeg');
         proc.withAudioCodec('libmp3lame')
             .toFormat('mp3')
-            .save(path.join(userData, `/temp/${info.video_id}.mp3`));
+            .save(path.join(userData, 'temp', `${info.video_id}.mp3`));
         proc.on('end', function() {
-            return res.sendFile(path.join(userData, `/temp/${info.video_id}.mp3`))
+            return res.sendFile(path.join(userData, 'temp', `${info.video_id}.mp3`))
         });
 
     })
