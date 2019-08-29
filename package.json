@@ -1,0 +1,35 @@
+{
+  "name": "yourturn",
+  "version": "1.0.0",
+  "description": "Native YouTube Music Player",
+  "main": "player.js",
+  "scripts": {
+    "start": "electron .",
+    "packager-linux-x64": "electron-packager . yourturn --config package.json --asar.unpackDir=bin --ignore=bin/win --overwrite --platform linux --arch x64 --out dist/",
+    "installer-linux-x64": "electron-installer-debian --src dist/yourturn-linux-x64/ --dest dist/installers/ --arch amd64 --config debian.json"
+  },
+  "keywords": [
+    "YouTube",
+    "Music",
+    "Player"
+  ],
+  "author": "Kawaaii Programming",
+  "license": "ISC",
+  "dependencies": {
+    "discord-rich-presence": "0.0.8",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "ffmpeg": "0.0.4",
+    "fluent-ffmpeg": "^2.1.2",
+    "moment-duration-format": "^2.3.2",
+    "youtube-dl": "^2.0.1",
+    "yt-search": "^0.4.1",
+    "ytdl-core": "^0.29.5",
+    "ytdl-getinfo": "^1.1.0"
+  },
+  "devDependencies": {
+    "electron": "^6.0.4",
+    "electron-packager": "^14.0.5",
+    "electron-builder": "^21.2.0"
+  }
+}

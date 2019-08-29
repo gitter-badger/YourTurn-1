@@ -1,0 +1,13 @@
+// File Types //
+*.html
+*.zip
+*.txt
+
+// Folders //
+node_modules
+bin
+dist
+
+// Files //
+package-lock.json
+bin.zip

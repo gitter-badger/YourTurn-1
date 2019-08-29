@@ -1,0 +1,14 @@
+{
+  "productName": "YourTurn",
+  "genericName": "YourTurn",
+  "maintainer": "Kawaaii Programming <administrator@kawaaii.moe>",
+  "homepage": "https://www.github.com/kawaaii",
+  "dest": "release-builds/",
+  "icon": "assets/icons/logo_trans.png",
+  "categories": [
+    "AudioVideo"
+  ],
+  "lintianOverrides": [
+    "changelog-file-missing-in-native-package"
+  ]
+}
